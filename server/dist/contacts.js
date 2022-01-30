@@ -88,14 +88,18 @@ class Worker {
                         inReject(inError);
                     }
                     else {
-                        inResolve(this.db.find({ _id: inContact._id }, (inError), Error | null));
+                        inResolve(new Promise((inResolve, inReject) => {
+                            this.db.find({ _id: inContact._id }, (inError) => {
+                                if (inError) {
+                                    inReject(inError);
+                                }
+                            });
+                        }));
                     }
                 });
             });
         });
     }
-    ;
 }
 exports.Worker = Worker;
-;
 //# sourceMappingURL=contacts.js.map

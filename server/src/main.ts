@@ -16,10 +16,13 @@ app.use(function (
   inNext: NextFunction
 ) {
   inResponse.header("Access-Control-Allow-Origin", "*");
-  inResponse.header("Access-Control-Allow-Methods", "GET,POST,DELETE,OPTIONS");
+  inResponse.header(
+    "Access-Control-Allow-Methods",
+    "GET,POST,DELETE,PUT,OPTIONS"
+  );
   inResponse.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin,X-Requested-With,Content-Type,Accept"
   );
   inNext();
 });
